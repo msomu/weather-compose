@@ -1,4 +1,12 @@
-package dev.msomu.weathercompose.data
+package dev.msomu.weathercompose.mock
+
+import dev.msomu.weathercompose.data.models.City
+import dev.msomu.weathercompose.data.models.Coord
+import dev.msomu.weathercompose.data.models.DailyForecast
+import dev.msomu.weathercompose.data.models.DayWeather
+import dev.msomu.weathercompose.data.models.FeelsLike
+import dev.msomu.weathercompose.data.models.Temp
+import dev.msomu.weathercompose.data.models.Weather
 
 fun getDummyData(): DailyForecast {
     return DailyForecast(
@@ -13,7 +21,7 @@ fun getDummyData(): DailyForecast {
                 deg = 0,
                 dt = 1647153000,
                 feels_like = FeelsLike(
-                    day = 0,
+                    day = 0.0,
                     eve = 0.0,
                     morn = 0.0,
                     night = 0.0

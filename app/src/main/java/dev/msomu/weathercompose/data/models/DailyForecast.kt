@@ -1,4 +1,4 @@
-package dev.msomu.weathercompose.data
+package dev.msomu.weathercompose.data.models
 
 data class DailyForecast(
     val city: City,
