@@ -1,5 +1,13 @@
 package dev.msomu.weathercompose.data
 
+import dev.msomu.weathercompose.data.models.City
+import dev.msomu.weathercompose.data.models.Coord
+import dev.msomu.weathercompose.data.models.DailyForecast
+import dev.msomu.weathercompose.data.models.DayWeather
+import dev.msomu.weathercompose.data.models.FeelsLike
+import dev.msomu.weathercompose.data.models.Temp
+import dev.msomu.weathercompose.data.models.Weather
+
 fun getDummyData(): DailyForecast {
     return DailyForecast(
         city = City(

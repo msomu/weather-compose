@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.accompanist.insets.ProvideWindowInsets
+import dagger.hilt.android.AndroidEntryPoint
 import dev.msomu.weathercompose.ui.Actions
 import dev.msomu.weathercompose.ui.Destinations.CityWeatherListArgs.CityName
 import dev.msomu.weathercompose.ui.Destinations.Home
@@ -26,6 +27,7 @@ import dev.msomu.weathercompose.ui.screen.WeatherDetailScreen
 import dev.msomu.weathercompose.ui.screen.WeatherListScreen
 import dev.msomu.weathercompose.ui.theme.WeatherComposeTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.msomu.weathercompose.data.DayWeather
+import dev.msomu.weathercompose.data.models.DayWeather
 import dev.msomu.weathercompose.data.getDummyData
 import dev.msomu.weathercompose.ui.componet.HomeAppBar
 
