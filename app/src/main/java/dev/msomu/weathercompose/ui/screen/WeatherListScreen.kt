@@ -38,7 +38,7 @@ fun WeatherListScreen(
             }
         }
         is Resource.Error -> {
-            Text(text = "Error on Loading")
+            Text(text = "Error on Loading ${weatherDisplayDataListState.value.error?.message}")
         }
         is Resource.Success -> {
             val weatherList = weatherDisplayDataListState.value.data ?: emptyList()
