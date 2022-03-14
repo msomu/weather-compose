@@ -27,7 +27,7 @@ class DefaultWeatherRepository @Inject constructor(
                 data.body()!!
             } else {
                 Log.e("WeatherRepository","Success: ${data.isSuccessful} error: ${data.message()} ")
-                throw Error()
+                throw Error(data.message())
             }
         },
         saveFetchResult = { data ->

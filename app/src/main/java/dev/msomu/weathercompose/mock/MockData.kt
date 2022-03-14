@@ -28,7 +28,7 @@ fun getDummyData(): DailyForecast {
                 ),
                 gust = 0.0,
                 humidity = 0,
-                pop = 0,
+                pop = 0.0,
                 pressure = 0,
                 speed = 0.0,
                 sunrise = 1647132478,
