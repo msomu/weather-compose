@@ -55,6 +55,7 @@ fun WeatherApp() {
                             cityName = backStackEntry.arguments?.getString(
                                 CityName
                             ) ?: "",
+                            openWeatherDetail = actions.openWeatherDetail
                         )
                     }
                     composable(
