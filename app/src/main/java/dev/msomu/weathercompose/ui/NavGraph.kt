@@ -21,7 +21,7 @@ class Actions(navController: NavHostController) {
     val openWeatherList: (String) -> Unit = { cityName ->
         navController.navigate("$WeatherList/$cityName")
     }
-    val openWeatherDetail: (String, String) -> Unit = { date, cityName ->
+    val openWeatherDetail: (String, Int) -> Unit = { cityName, date ->
         navController.navigate("$WeatherDetail/$cityName/$date")
     }
     val navigateBack: () -> Unit = {

@@ -11,23 +11,29 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.msomu.weathercompose.data.models.DayWeather
-import dev.msomu.weathercompose.data.getDummyData
+import dev.msomu.weathercompose.data.local.WeatherDisplayData
+import dev.msomu.weathercompose.mock.getDummyData
 import dev.msomu.weathercompose.ui.componet.HomeAppBar
+import dev.msomu.weathercompose.util.Resource
 
 @Composable
-fun WeatherDetailScreen(cityName: String, date: String) {
-    val weather = getDummyData().list.first()
-    WeatherDetailContent(cityName, weather)
+fun WeatherDetailScreen(
+    cityName: String,
+    detailViewState: State<Resource<WeatherDisplayData>>,
+    date: String
+) {
+    val detailView = detailViewState.value.data
+    WeatherDetailContent(cityName, detailView)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WeatherDetailContent(cityName: String, weather: DayWeather, modifier: Modifier = Modifier) {
+fun WeatherDetailContent(cityName: String, weather: WeatherDisplayData?, modifier: Modifier = Modifier) {
     Scaffold(
         topBar = { HomeAppBar(title = cityName) },
         content = { innerPadding ->
@@ -35,7 +41,7 @@ fun WeatherDetailContent(cityName: String, weather: DayWeather, modifier: Modifi
                 .fillMaxSize()
                 .padding(24.dp)) {
                 Text(
-                    text = "${weather.temp.day}",
+                    text = "${weather?.temp}",
                     style = MaterialTheme.typography.displayLarge,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -43,21 +49,21 @@ fun WeatherDetailContent(cityName: String, weather: DayWeather, modifier: Modifi
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "Feels Like: ${weather.feels_like.day}",
+                    text = "Feels Like: ${weather?.feelsLike}",
                     style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.End
                 )
                 Spacer(modifier = Modifier.height(64.dp))
                 Text(
-                    text = weather.weather.first().main,
+                    text = "${weather?.weatherMain}",
                     style = MaterialTheme.typography.displayMedium,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Start
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
-                    text = weather.weather.first().description,
+                    text = "${weather?.weatherDescription}",
                     style = MaterialTheme.typography.displaySmall,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Start
@@ -70,5 +76,13 @@ fun WeatherDetailContent(cityName: String, weather: DayWeather, modifier: Modifi
 @Preview
 @Composable
 fun WeatherDetailContentPreview() {
-    WeatherDetailContent("Chennai",getDummyData().list.first())
+    WeatherDetailContent("Chennai", WeatherDisplayData(
+        dt = 0,
+        cityName = "Chennai",
+        temp = 303.0,
+        feelsLike = 304.0,
+        weatherMain = "Clouds",
+        weatherDescription = "overcast clouds"
+    )
+    )
 }
